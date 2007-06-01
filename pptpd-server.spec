@@ -3,6 +3,7 @@
 %define	version		1.3.0
 %define	rel		2
 %define	release		%mkrel %{rel}
+%define	pppver		2.4.4
 %define buildlibwrap 1
 %define buildbsdppp 0
 %define buildslirp 0
@@ -21,7 +22,7 @@ Source1:	%{realname}-init
 #Patch0: %{realname}-%{version}-headers.patch.bz2
 URL:		http://www.poptop.org/
 Provides:	%{realname} = %{version}-%{release} poptop = %{version}-%{release}
-Requires:	tcp_wrappers
+Requires:	tcp_wrappers ppp = %{pppver}
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -80,6 +81,8 @@ buildopts="$buildopts --with-bcrelay"
 buildopts="$buildopts --with-pns-mode"
 %endif
 %configure $buildopts
+echo '#undef VERSION' >> plugins/patchlevel.h
+echo '#define VERSION "%{pppver}"' >> plugins/patchlevel.h
 
 perl -pi -e 's|-o root||' plugins/Makefile
 perl -pi -e 's|/lib/pptpd|/%{_lib}/pptpd|' plugins/Makefile
@@ -119,4 +122,3 @@ rm -rf %{buildroot}
 %{_sbindir}/*
 %{_bindir}/*
 %{_libdir}/pptpd
-

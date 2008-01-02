@@ -25,6 +25,7 @@ Provides:	%{realname} = %{version}-%{release} poptop = %{version}-%{release}
 Requires:	tcp_wrappers ppp = %{pppver}
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
+Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 PoPToP is the PPTP server solution for Linux (ports exist for Solaris

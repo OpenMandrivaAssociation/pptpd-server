@@ -1,9 +1,9 @@
 %define	name		pptpd-server
 %define	realname	pptpd
-%define	version		1.3.0
-%define	rel		3
+%define	version		1.3.4
+%define	rel		1
 %define	release		%mkrel %{rel}
-%define	pppver		2.4.4
+%define	pppver		%(rpm -q --qf %{VERSION} ppp)
 %define buildlibwrap 1
 %define buildbsdppp 0
 %define buildslirp 0
@@ -17,7 +17,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPL
 Group:		Networking/Other
-Source0:	%{realname}-%{version}.tar.bz2
+Source0:	%{realname}-%{version}.tar.gz
 Source1:	%{realname}-init
 #Patch0: %{realname}-%{version}-headers.patch.bz2
 URL:		http://www.poptop.org/
@@ -80,7 +80,7 @@ buildopts="$buildopts --with-bcrelay"
 %if %{buildpnsmode}
 buildopts="$buildopts --with-pns-mode"
 %endif
-%configure $buildopts
+%configure2_5x $buildopts
 echo '#undef VERSION' >> plugins/patchlevel.h
 echo '#define VERSION "%{pppver}"' >> plugins/patchlevel.h
 

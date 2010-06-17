@@ -1,7 +1,7 @@
 %define	name		pptpd-server
 %define	realname	pptpd
 %define	version		1.3.4
-%define	rel		1
+%define	rel		2
 %define	release		%mkrel %{rel}
 %define	pppver		%(rpm -q --qf %{VERSION} ppp)
 %define buildlibwrap 1
@@ -23,6 +23,8 @@ Source1:	%{realname}-init
 URL:		http://www.poptop.org/
 Provides:	%{realname} = %{version}-%{release} poptop = %{version}-%{release}
 Requires:	tcp_wrappers ppp = %{pppver}
+# We need ppp to get its version
+BuildRequires:	ppp
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot

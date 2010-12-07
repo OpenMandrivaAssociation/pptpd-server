@@ -1,7 +1,7 @@
 %define	name		pptpd-server
 %define	realname	pptpd
 %define	version		1.3.4
-%define	rel		2
+%define	rel		3
 %define	release		%mkrel %{rel}
 %define	pppver		%(rpm -q --qf %{VERSION} ppp)
 %define buildlibwrap 1

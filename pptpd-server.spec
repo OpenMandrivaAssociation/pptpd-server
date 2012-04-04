@@ -1,8 +1,8 @@
 %define	name		pptpd-server
 %define	realname	pptpd
 %define	version		1.3.4
-%define	rel		3
-%define	release		%mkrel %{rel}
+%define	rel		4
+%define	release		%{rel}
 %define	pppver		%(rpm -q --qf %{VERSION} ppp)
 %define buildlibwrap 1
 %define buildbsdppp 0
@@ -19,15 +19,13 @@ License:	GPL
 Group:		Networking/Other
 Source0:	%{realname}-%{version}.tar.gz
 Source1:	%{realname}-init
-#Patch0: %{realname}-%{version}-headers.patch.bz2
-URL:		http://www.poptop.org/
+URL:		http://poptop.sourceforge.net/
 Provides:	%{realname} = %{version}-%{release} poptop = %{version}-%{release}
 Requires:	tcp_wrappers ppp = %{pppver}
 # We need ppp to get its version
 BuildRequires:	ppp
 Requires(post):	rpm-helper
 Requires(preun):	rpm-helper
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 PoPToP is the PPTP server solution for Linux (ports exist for Solaris
@@ -57,8 +55,6 @@ clients. PoPToP is free GNU software.
 
 %prep
 %setup -q -n %{realname}-%{version}
-
-#%patch -p1
 
 rm -rf `find -name CVS`
 
@@ -93,7 +89,6 @@ perl -pi -e 's|/usr/lib/pptpd|%{_libdir}/pptpd|' pptpctrl.c
 %make CFLAGS="$RPM_OPT_FLAGS -fPIC -fno-builtin -Wall -DSBINDIR='\"%{_sbindir}\"'" 
 
 %install
-rm -rf %{buildroot}
 %makeinstall
 
 install -m0644 samples/%{realname}.conf -D %{buildroot}%{_sysconfdir}/%{realname}.conf
@@ -109,9 +104,6 @@ install -m0755 tools/pptp-portslave -D %{buildroot}%{_sbindir}/pptp-portslave
 
 %preun
 %_preun_service	%{realname}
-
-%clean 
-rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)

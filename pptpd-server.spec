@@ -116,3 +116,85 @@ install -m0755 tools/pptp-portslave -D %{buildroot}%{_sbindir}/pptp-portslave
 %{_sbindir}/*
 %{_bindir}/*
 %{_libdir}/pptpd
+
+
+%changelog
+* Thu Apr 05 2012 Johnny A. Solbu <solbu@mandriva.org> 1.3.4-4
++ Revision: 789268
+- Fix dead URL
+- Spec cleanup
+
+* Tue Dec 07 2010 Oden Eriksson <oeriksson@mandriva.com> 1.3.4-3mdv2011.0
++ Revision: 614608
+- the mass rebuild of 2010.1 packages
+
+* Thu Jun 17 2010 Pascal Terjan <pterjan@mandriva.org> 1.3.4-2mdv2010.1
++ Revision: 548270
+- Fix broken dependency
+
+  + Michael Scherer <misc@mandriva.org>
+    - fix wrong command in init script
+
+* Thu Jan 07 2010 Frederik Himpe <fhimpe@mandriva.org> 1.3.4-1mdv2010.1
++ Revision: 487319
+- Update to version 1.3.4
+- Use %%configure2_5x to fix ./configure warnings
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 1.3.0-3mdv2010.0
++ Revision: 430771
+- rebuild
+
+* Wed Jan 02 2008 Olivier Blin <blino@mandriva.org> 1.3.0-2mdv2008.1
++ Revision: 140735
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Per Øyvind Karlsen <peroyvind@mandriva.org>
+    - fix ppp version and dependency on it
+
+
+* Wed Aug 30 2006 Per Øyvind Karlsen <pkarlsen@mandriva.com> 1.3.0-2mdv2007.0
+- ppp_mppe_mppc module has been renamed to ppp_mppe, rename initscript accordingly
+- don't bzip2 initscript
+- gprintify initscript up front for translation
+- fix macro-in-%%changelog
+
+* Thu Mar 02 2006 Per Øyvind Karlsen <pkarlsen@mandriva.com> 1.3.0-1mdk
+- 1.3.0
+
+* Thu Feb 02 2006 Per Øyvind Karlsen <pkarlsen@mandriva.com> 1.2.1-7mdk
+- move ppp options file to correct directory
+
+* Mon Jan 16 2006 Olivier Blin <oblin@mandriva.com> 1.2.1-6mdk
+- add -fPIC to fix build on x86_64
+- fix plugin path on x86_64
+
+* Mon Jan 09 2006 Olivier Blin <oblin@mandriva.com> 1.2.1-5mdk
+- fix typo in initscript
+
+* Mon Jan 09 2006 Olivier Blin <oblin@mandriva.com> 1.2.1-4mdk
+- convert parallel init to LSB
+- split Requires(X,Y)
+
+* Tue Jan 03 2006 Per Øyvind Karlsen <pkarlsen@mandriva.com> 1.2.1-3mdk
+- add parallel init support
+- fix executable-marked-as-config-file
+- be sure to include debug stuff only in debug package
+- fix requires(post,preun)
+
+* Wed Jun 01 2005 Per Øyvind Karlsen <pkarlsen@mandriva.com> 1.2.1-2mdk
+- add poptop to provides
+- versioned provides
+- %%mkrel
+- compile with $RPM_OPT_FLAGS
+
+* Wed Jun 23 2004 Florin <florin@mandrakesoft.com> 1.2.1-1mdk
+- 1.2.1
+- add modprobe lines in the initscript
+- remove the '-o root' in make install
+- remove the Anon-CVS and the html/* files in docs
+- add the tools %%{_bindir} binaries
+- use mcros for %%configure
+

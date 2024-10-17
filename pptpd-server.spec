@@ -19,7 +19,7 @@ License:	GPL
 Group:		Networking/Other
 Source0:	%{realname}-%{version}.tar.gz
 Source1:	%{realname}.service
-URL:		http://poptop.sourceforge.net/
+URL:		https://poptop.sourceforge.net/
 Provides:	%{realname} = %{version}-%{release} poptop = %{version}-%{release}
 Requires:	tcp_wrappers ppp = %{pppver}
 # We need ppp to get its version
